@@ -11,21 +11,30 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
 import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Inicializa la configuración de entorno
+env = environ.Env(
+   DEBUG=(bool, False) # Valor por defecto para DEBUG
+)
+
+# Lee el archivo .env ubicado en la raíz del proyecto
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&&*2i5-+-n2&_8oxqprsajug_cg6dn90psl_x&%@ws@4a5*25@'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -88,11 +97,11 @@ WSGI_APPLICATION = 'gestor_vacuna.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gestor_vacuna',  
-        'USER': 'root',  
-        'PASSWORD': '',
-        'HOST': 'localhost',  
-        'PORT': '3306', 
+        'NAME': env('DB_NAME'),  
+        'USER': env('DB_USER'),  
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),  
+        'PORT': env('DB_PORT'), 
     }
 }
 
