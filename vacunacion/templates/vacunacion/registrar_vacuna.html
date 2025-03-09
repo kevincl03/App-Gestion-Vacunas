@@ -1,7 +1,18 @@
-{% extends 'base.html' %} {% block content %}
-<h2>Registrar Vacuna</h2>
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Guardar</button>
-</form>
+{% extends 'base.html' %} 
+{% block content %}
+<section aria-labelledby="titulo-registro-vacuna">
+  <header>
+    <h2 id="titulo-registro-vacuna">Registrar Vacuna</h2>
+  </header>
+  
+  <form method="post" aria-labelledby="titulo-registro-vacuna">
+    {% csrf_token %}
+    <div class="form-fields">
+      {{ form.as_p }}
+    </div>
+    <div class="form-actions">
+      <button type="submit">Guardar</button>
+    </div>
+  </form>
+</section>
 {% endblock %}

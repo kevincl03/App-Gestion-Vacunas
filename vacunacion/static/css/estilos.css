@@ -544,15 +544,26 @@ footer a:hover {
 .facebook-icon {
   width: 60px; 
   height: 60px;
-  margin-left: 20px;
+  display: inline-block;
   vertical-align: middle;
 }
 
 .instagram-icon {
-  width: 60px; 
-  height: 40px;
-  margin-left: 10px;
+  width: 70px; 
+  height: 45px;
+  display: inline-block;
   vertical-align: middle;
+}
+
+/* Ajustes para alinear los iconos horizontalmente */
+.nav-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-link {
+  display: inline-block;
 }
 
 /* Ajustes adicionales para mantener la consistencia */
@@ -620,8 +631,9 @@ footer a:hover {
   /* Ajustes para íconos en pantallas pequeñas */
   .facebook-icon,
   .instagram-icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
   }
 
   /* Nuevos estilos responsive para ¿Por qué elegir nuestra veterinaria? */

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reportes de Ventas</title>
+    <meta name="description" content="Generación de reportes de ventas por rango de fechas" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
   </head>
@@ -12,15 +13,15 @@
     <header class="floating-header">
       <div class="container">
         <div class="logo">
-          <img src="{% static 'img/logo.jpg' %}" alt="Logo" />
+          <img src="{% static 'img/logo.jpg' %}" alt="Logo Gestor de Vacunas" />
           <span>Gestor de Vacunas</span>
         </div>
-        <div class="menu-toggle">☰</div>
-        <nav>
+        <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
+        <nav aria-label="Navegación principal">
           <ul>
             <li><a href="{% url 'inicio' %}">Inicio</a></li>
             <li><a href="{% url 'consultar_carnet' %}">Consultar Carnet</a></li>
-            <li><a href="{% url 'reportes_ventas' %}">Reportes de Ventas</a></li>
+            <li><a href="{% url 'reportes_ventas' %}" aria-current="page">Reportes de Ventas</a></li>
             <li><a href="{% url 'servicios' %}">Servicios</a></li>
             <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
             <li><a href="/admin/">Panel Administrativo</a></li>
@@ -33,25 +34,50 @@
     <main class="content">
       <h1>Reportes de Ventas</h1>
 
-      <form method="GET" action="{% url 'reportes_ventas' %}">
-        <label for="fecha_inicio">Fecha de Inicio:</label>
-        <input type="date" id="fecha_inicio" name="fecha_inicio" required />
+      <section aria-labelledby="filtro-reportes">
+        <h2 id="filtro-reportes" class="visually-hidden">Filtros de Reporte</h2>
+        <form method="GET" action="{% url 'reportes_ventas' %}" role="search" aria-labelledby="filtro-reportes">
+          <div class="form-group">
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required aria-required="true" />
+          </div>
 
-        <label for="fecha_fin">Fecha de Fin:</label>
-        <input type="date" id="fecha_fin" name="fecha_fin" required />
+          <div class="form-group">
+            <label for="fecha_fin">Fecha de Fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required aria-required="true" />
+          </div>
 
-        <button type="submit">Generar Reporte</button>
-      </form>
+          <div class="form-actions">
+            <button type="submit">Generar Reporte</button>
+          </div>
+        </form>
+      </section>
 
       {% if ventas %}
-        <div class="ventas-detalles">
-          <h2>Ventas Realizadas</h2>
-          <ul>
-            {% for venta in ventas %}
-              <li><strong>Fecha:</strong> {{ venta.fecha }} | <strong>Producto:</strong> {{ venta.producto }} | <strong>Monto:</strong> {{ venta.monto }}</li>
-            {% endfor %}
-          </ul>
-        </div>
+        <section class="ventas-detalles" aria-labelledby="titulo-ventas">
+          <h2 id="titulo-ventas">Ventas Realizadas</h2>
+          <div class="table-responsive">
+            <table>
+              <caption class="visually-hidden">Lista de ventas en el período seleccionado</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Monto</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for venta in ventas %}
+                  <tr>
+                    <td>{{ venta.fecha }}</td>
+                    <td>{{ venta.producto }}</td>
+                    <td>{{ venta.monto }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </section>
       {% endif %}
     </main>
 
@@ -66,7 +92,9 @@
       document
         .querySelector(".menu-toggle")
         .addEventListener("click", function () {
-          document.querySelector("nav ul").classList.toggle("show");
+          const navMenu = document.querySelector("nav ul");
+          navMenu.classList.toggle("show");
+          this.setAttribute("aria-expanded", navMenu.classList.contains("show"));
         });
     </script>
   </body>

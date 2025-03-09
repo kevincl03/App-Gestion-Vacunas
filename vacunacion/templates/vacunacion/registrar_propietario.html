@@ -5,22 +5,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registrar Propietario</title>
+    <meta name="description" content="Formulario para registrar un nuevo propietario de mascota en el sistema de vacunación" />
     <link rel="stylesheet" href="{% static 'css/registro_propietario.css' %}" />
   </head>
   <body>
-    <div class="form-container">
+    <main class="form-container">
       <!-- Sección izquierda: formulario -->
-      <div class="left-section">
+      <section class="left-section">
         <div class="form-content">
-          <h1>Registrar Propietario</h1>
-          <form method="post">
+          <header>
+            <h1>Registrar Propietario</h1>
+          </header>
+          <form method="post" aria-label="Formulario de registro de propietario">
             {% csrf_token %}
             <div class="input-group">{{ form.as_p }}</div>
             <button type="submit" class="btn-submit">Guardar</button>
 
             <!-- Aquí agregamos el mensaje de éxito -->
             {% if mensaje %}
-            <div class="success-message">
+            <div class="success-message" role="alert" aria-live="polite">
               <p>{{ mensaje }}</p>
             </div>
             <!-- Script para ocultar el mensaje después de 5 segundos -->
@@ -33,28 +36,33 @@
             {% endif %}
 
             <!-- Aquí agregamos el mensaje informativo -->
-            <p class="info-message">
-              Después de guardar la información del propietario, por favor haga
-              clic en 'Siguiente' para registrar los datos de su mascota y
-              completar el proceso.
-            </p>
+            <div class="info-message" role="note">
+              <p>
+                Después de guardar la información del propietario, por favor haga
+                clic en 'Siguiente' para registrar los datos de su mascota y
+                completar el proceso.
+              </p>
+            </div>
 
             <!-- Aquí agregamos el botón de Siguiente -->
-            <a href="{% url 'registrar_mascota' %}" class="btn-next"
-              >Siguiente</a
-            >
+            <nav class="navigation-controls">
+              <a href="{% url 'registrar_mascota' %}" class="btn-next" role="button">Siguiente</a>
+            </nav>
           </form>
         </div>
-      </div>
+      </section>
 
       <!-- Sección derecha: imagen -->
-      <div class="right-section">
+      <aside class="right-section">
         <img
           src="{% static 'img/fondo_veterinaria.webp' %}"
-          alt="Fondo veterinaria"
+          alt="Imagen de clínica veterinaria"
           class="background-image"
+          width="500"
+          height="600"
         />
-      </div>
-    </div>
+      </aside>
+    </main>
+    
   </body>
 </html>
