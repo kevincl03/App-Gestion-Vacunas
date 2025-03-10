@@ -36,7 +36,7 @@ Sistema web desarrollado en Django para la gestión de vacunación de mascotas e
 
 1. **Clonar el repositorio**
 ```bash
-git clone [https://github.com/kevincl03/App-Gestion-Vacunas.git]
+git clone https://github.com/kevincl03/App-Gestion-Vacunas.git
 cd App-Gestion-Vacunas
 ```
 
