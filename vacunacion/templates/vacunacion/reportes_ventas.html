@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reportes de Ventas</title>
+<<<<<<< HEAD
     <meta name="description" content="Generación de reportes de ventas por rango de fechas" />
+=======
+>>>>>>> 88f06df (Actualizacion de registros)
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
   </head>
@@ -13,6 +16,7 @@
     <header class="floating-header">
       <div class="container">
         <div class="logo">
+<<<<<<< HEAD
           <img src="{% static 'img/logo.jpg' %}" alt="Logo Gestor de Vacunas" />
           <span>Gestor de Vacunas</span>
         </div>
@@ -22,6 +26,17 @@
             <li><a href="{% url 'inicio' %}">Inicio</a></li>
             <li><a href="{% url 'consultar_carnet' %}">Consultar Carnet</a></li>
             <li><a href="{% url 'reportes_ventas' %}" aria-current="page">Reportes de Ventas</a></li>
+=======
+          <img src="{% static 'img/logo.jpg' %}" alt="Logo" />
+          <span>Gestor de Vacunas</span>
+        </div>
+        <div class="menu-toggle">☰</div>
+        <nav>
+          <ul>
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li><a href="{% url 'consultar_carnet' %}">Consultar Carnet</a></li>
+            <li><a href="{% url 'reportes_ventas' %}">Reportes de Ventas</a></li>
+>>>>>>> 88f06df (Actualizacion de registros)
             <li><a href="{% url 'servicios' %}">Servicios</a></li>
             <li><a href="{% url 'nosotros' %}">Sobre Nosotros</a></li>
             <li><a href="/admin/">Panel Administrativo</a></li>
@@ -34,6 +49,7 @@
     <main class="content">
       <h1>Reportes de Ventas</h1>
 
+<<<<<<< HEAD
       <section aria-labelledby="filtro-reportes">
         <h2 id="filtro-reportes" class="visually-hidden">Filtros de Reporte</h2>
         <form method="GET" action="{% url 'reportes_ventas' %}" role="search" aria-labelledby="filtro-reportes">
@@ -78,13 +94,38 @@
             </table>
           </div>
         </section>
+=======
+      <form method="GET" action="{% url 'reportes_ventas' %}">
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio" required />
+
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin" required />
+
+        <button type="submit">Generar Reporte</button>
+      </form>
+
+      {% if ventas %}
+        <div class="ventas-detalles">
+          <h2>Ventas Realizadas</h2>
+          <ul>
+            {% for venta in ventas %}
+              <li><strong>Fecha:</strong> {{ venta.fecha }} | <strong>Producto:</strong> {{ venta.producto }} | <strong>Monto:</strong> {{ venta.monto }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+>>>>>>> 88f06df (Actualizacion de registros)
       {% endif %}
     </main>
 
     <!-- Pie de página -->
     <footer class="footer">
       <div class="container">
+<<<<<<< HEAD
         <p>&copy; 2025 Gestor de Vacunas - Todos los derechos reservados.</p>
+=======
+        <p>&copy; 2024 Gestor de Vacunas - Todos los derechos reservados.</p>
+>>>>>>> 88f06df (Actualizacion de registros)
       </div>
     </footer>
 
@@ -92,9 +133,13 @@
       document
         .querySelector(".menu-toggle")
         .addEventListener("click", function () {
+<<<<<<< HEAD
           const navMenu = document.querySelector("nav ul");
           navMenu.classList.toggle("show");
           this.setAttribute("aria-expanded", navMenu.classList.contains("show"));
+=======
+          document.querySelector("nav ul").classList.toggle("show");
+>>>>>>> 88f06df (Actualizacion de registros)
         });
     </script>
   </body>

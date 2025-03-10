@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Cita</title>
+<<<<<<< HEAD
     <meta name="description" content="Formulario para agendar una cita de vacunación para tu mascota">
+=======
+>>>>>>> 88f06df (Actualizacion de registros)
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/registrar_cita.css' %}">
     <script>
@@ -61,6 +64,7 @@
     </script>
 </head>
 <body>
+<<<<<<< HEAD
     <header>
         <h1>Registrar Cita</h1>
     </header>
@@ -71,17 +75,34 @@
 
             <form method="POST" onsubmit="handleFormSubmit(event)" aria-labelledby="form-title">
                 <span id="form-title" class="visually-hidden">Formulario de registro de cita</span>
+=======
+    <main>
+        <div class="form-container">
+            <h1>Registrar Cita</h1>
+
+            <div class="success-message" style="display: none;"></div>
+
+            <form method="POST" onsubmit="handleFormSubmit(event)">
+>>>>>>> 88f06df (Actualizacion de registros)
                 {% csrf_token %}
                 {{ form.as_p }}
 
                 <div class="form-buttons">
                     <button type="submit" class="submit-button">Agendar Cita</button>
+<<<<<<< HEAD
                     <a href="{% url 'servicios' %}" class="cancel-button" role="button">Cancelar</a>
                 </div>
             </form>
         </section>
     </main>
     
+=======
+                    <a href="{% url 'servicios' %}" class="cancel-button">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+>>>>>>> 88f06df (Actualizacion de registros)
 </body>
 </html>
 

@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registrar Mascota</title>
+<<<<<<< HEAD
     <meta name="description" content="Formulario para registrar una nueva mascota en el sistema de vacunación" />
     <link rel="stylesheet" href="{% static 'css/registro_mascota.css' %}" />
   </head>
@@ -21,6 +22,20 @@
           <!-- Mensaje de éxito después de guardar -->
           {% if mensaje %}
           <div class="success-message" role="alert" aria-live="assertive">
+=======
+    <link rel="stylesheet" href="{% static 'css/registro_mascota.css' %}" />
+  </head>
+  <body>
+    <div class="form-container">
+      <!-- Sección izquierda: formulario -->
+      <div class="left-section">
+        <div class="form-content">
+          <h1>Registrar Mascota</h1>
+
+          <!-- Mensaje de éxito después de guardar -->
+          {% if mensaje %}
+          <div class="success-message">
+>>>>>>> 88f06df (Actualizacion de registros)
             <p>{{ mensaje }}</p>
           </div>
           <script>
@@ -31,12 +46,17 @@
           </script>
           {% endif %}
 
+<<<<<<< HEAD
           <form method="post" aria-labelledby="registro-mascota">
             <span id="registro-mascota" class="visually-hidden">Formulario de registro de mascota</span>
+=======
+          <form method="post">
+>>>>>>> 88f06df (Actualizacion de registros)
             {% csrf_token %}
             <div class="input-group">
               {{ form.as_p }}
             </div>
+<<<<<<< HEAD
             <div class="form-actions">
               <button type="submit" class="btn-submit">Guardar</button>
             </div>
@@ -58,5 +78,23 @@
       </aside>
     </main>
 
+=======
+            <button type="submit" class="btn-submit">Guardar</button>
+
+            <p class="info-message">
+              Recuerda que este registro solo se realiza una vez. Para programar
+              una cita para tu mascota, puedes hacerlo fácilmente a través de
+              nuestro número de WhatsApp.
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sección derecha: imagen -->
+      <div class="right-section">
+        <img src="{% static 'img/registro_mascota.jpg' %}" alt="Fondo de mascota" />
+      </div>
+    </div>
+>>>>>>> 88f06df (Actualizacion de registros)
   </body>
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %} 
 {% block content %}
 <section aria-labelledby="titulo-registro-vacuna">
@@ -15,4 +16,12 @@
     </div>
   </form>
 </section>
+=======
+{% extends 'base.html' %} {% block content %}
+<h2>Registrar Vacuna</h2>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Guardar</button>
+</form>
+>>>>>>> 88f06df (Actualizacion de registros)
 {% endblock %}
