@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% block content %}
+<section aria-labelledby="titulo-registro">
+  <h2 id="titulo-registro">Registrar Especie</h2>
+  <form method="post" aria-labelledby="titulo-registro">
+    {% csrf_token %}
+    <div class="form-fields">
+      {{ form.as_p }}
+    </div>
+    <div class="form-actions">
+      <button type="submit">Guardar</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

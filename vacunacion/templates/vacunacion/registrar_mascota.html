@@ -1,0 +1,62 @@
+<!-- templates/registrar_mascota.html -->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Mascota</title>
+    <meta name="description" content="Formulario para registrar una nueva mascota en el sistema de vacunación" />
+    <link rel="stylesheet" href="{% static 'css/registro_mascota.css' %}" />
+  </head>
+  <body>
+    <main class="form-container">
+      <!-- Sección izquierda: formulario -->
+      <section class="left-section">
+        <div class="form-content">
+          <header>
+            <h1>Registrar Mascota</h1>
+          </header>
+
+          <!-- Mensaje de éxito después de guardar -->
+          {% if mensaje %}
+          <div class="success-message" role="alert" aria-live="assertive">
+            <p>{{ mensaje }}</p>
+          </div>
+          <script>
+            setTimeout(function () {
+              document.querySelector(".success-message").style.display = "none";
+              window.location.href = "{% url 'servicios' %}";
+            }, 5000); // 5000 ms = 5 segundos
+          </script>
+          {% endif %}
+
+          <form method="post" aria-labelledby="registro-mascota">
+            <span id="registro-mascota" class="visually-hidden">Formulario de registro de mascota</span>
+            {% csrf_token %}
+            <div class="input-group">
+              {{ form.as_p }}
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-submit">Guardar</button>
+            </div>
+
+            <aside class="info-message">
+              <p>
+                Recuerda que este registro solo se realiza una vez. Para programar
+                una cita para tu mascota, puedes hacerlo fácilmente a través de
+                nuestro número de WhatsApp.
+              </p>
+            </aside>
+          </form>
+        </div>
+      </section>
+
+      <!-- Sección derecha: imagen -->
+      <aside class="right-section">
+        <img src="{% static 'img/registro_mascota.jpg' %}" alt="Imagen de mascota saludable" width="500" height="600" />
+      </aside>
+    </main>
+
+  </body>
+</html>
